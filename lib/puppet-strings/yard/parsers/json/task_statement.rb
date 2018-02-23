@@ -1,7 +1,7 @@
 module PuppetStrings::Yard::Parsers::JSON
   # Represents the Puppet Task statement.
   class TaskStatement
-    attr_reader :line, :comments, :comments_range, :json
+    attr_reader :line, :comments, :comments_range, :json, :file
 
     def initialize(json, source, file)
       @file = file
@@ -9,6 +9,14 @@ module PuppetStrings::Yard::Parsers::JSON
       @json = json
       @line = 0
       @comments_range = nil
+    end
+
+    def docstring
+      YARD::Docstring.new(json['description'] || "")
+    end
+
+    def parameters
+      json['parameters'] || {}
     end
 
     def comments_hash_flag

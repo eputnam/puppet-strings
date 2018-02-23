@@ -42,13 +42,6 @@ class PuppetStrings::Yard::CodeObjects::Task < PuppetStrings::Yard::CodeObjects:
     @statement.source
   end
 
-  # A task can't be undocumented, which is nice. Because of this,
-  # just return a generic docstring for stats purposes.
-  # @return [YARD::Docstring] generic docstring
-  def docstring
-    YARD::Docstring.new("Puppet Task docstring")
-  end
-
   # Converts the code object to a hash representation.
   # @return [Hash] Returns a hash representation of the code object.
   def to_hash

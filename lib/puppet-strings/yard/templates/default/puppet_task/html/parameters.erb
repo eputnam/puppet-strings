@@ -7,7 +7,8 @@
         <span class="name"><%= parameter %></span>
         <span class="type">
             <tt>(<%= values['type'] %>)</tt>
-        </span> &mdash; <%= values['description'] %>
+        </span>
+        <% if values['description'] %> &mdash; <%= values['description'] %><% end %>
     </li>
     <% end %>
   </ul>
