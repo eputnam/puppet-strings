@@ -41,9 +41,30 @@ class PuppetStrings::Yard::CodeObjects::Task < PuppetStrings::Yard::CodeObjects:
     @statement.source
   end
 
+  def parameters
+    parameters = []
+    statement.json['parameters'].each do |name,props|
+      parameters.push({ name: name.to_s,
+                        tag_type: 'param',
+                        text: props['description'] || "",
+                        types: [props['type']] || "" })
+    end
+    parameters
+  end
+
   # Converts the code object to a hash representation.
   # @return [Hash] Returns a hash representation of the code object.
   def to_hash
-    { name: name.to_s }.merge statement.json
+    { name: name.to_s,
+      file: statement.file,
+      line: statement.line,
+      docstring: {
+        text: statement.json['description'],
+        tags: parameters
+      },
+      source: statement.source,
+      supports_noop: statement.json['supports_noop'],
+      input_method: statement.json['input_method']
+    }
   end
 end
