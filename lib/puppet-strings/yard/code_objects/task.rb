@@ -21,8 +21,7 @@ class PuppetStrings::Yard::CodeObjects::Task < PuppetStrings::Yard::CodeObjects:
   attr_reader :statement
 
   # Initializes a JSON task code object.
-  # @param [String] source The task's JSON file source
-  # @param [String] filepath Path to task's .json file
+  # @param statement TaskStatement object
   # @return [void]
   def initialize(statement)
     @name = statement.name
