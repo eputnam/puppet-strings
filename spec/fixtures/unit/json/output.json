@@ -609,7 +609,7 @@
         "tags": [
           {
             "name": "database",
-            "tag_type": "param",
+            "tag_name": "param",
             "text": "Database to connect to",
             "types": [
               "Optional[String[1]]"
@@ -617,7 +617,7 @@
           },
           {
             "name": "user",
-            "tag_type": "param",
+            "tag_name": "param",
             "text": "The user",
             "types": [
               "Optional[String[1]]"
@@ -625,7 +625,7 @@
           },
           {
             "name": "password",
-            "tag_type": "param",
+            "tag_name": "param",
             "text": "The password",
             "types": [
               "Optional[String[1]]"
@@ -633,7 +633,7 @@
           },
           {
             "name": "sql",
-            "tag_type": "param",
+            "tag_name": "param",
             "text": "Path to file you want backup to",
             "types": [
               "String[1]"

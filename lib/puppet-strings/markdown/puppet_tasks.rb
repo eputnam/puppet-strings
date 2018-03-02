@@ -14,7 +14,7 @@ module PuppetStrings::Markdown
     end
 
     def self.render
-      final = in_classes.length > 0 ? "## Tasks\n\n" : ""
+      final = in_tasks.length > 0 ? "## Tasks\n\n" : ""
       in_tasks.each do |task|
         final << task.render unless task.private?
       end

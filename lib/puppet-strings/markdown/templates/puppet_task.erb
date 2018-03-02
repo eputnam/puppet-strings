@@ -1,1 +1,38 @@
 ### <%= name %>
+
+<% if text -%>
+<%= text %>
+
+<% elsif summary -%>
+<%= summary %>
+
+<% else -%>
+<%= "The #{name} task." %>
+
+<% end -%>
+<% if supports_noop || input_method -%>
+#### Input
+
+<% if input_method -%>
+Input method: <%= input_method %>
+
+<% end -%>
+<% if supports_noop -%>
+Supports noop? <%= supports_noop %>
+
+<% end -%>
+<% end -%>
+<% if params -%>
+#### Parameters
+
+<% params.each do |param| -%>
+##### `<%= param[:name] %>`
+
+<% if param[:types] -%>
+Data type: `<%= param[:types].join(', ') -%>`
+
+<% end -%>
+<%= param[:text] %>
+
+<% end -%>
+<% end -%>

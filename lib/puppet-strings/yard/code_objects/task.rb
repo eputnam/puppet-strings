@@ -45,7 +45,7 @@ class PuppetStrings::Yard::CodeObjects::Task < PuppetStrings::Yard::CodeObjects:
     parameters = []
     statement.json['parameters'].each do |name,props|
       parameters.push({ name: name.to_s,
-                        tag_type: 'param',
+                        tag_name: 'param',
                         text: props['description'] || "",
                         types: [props['type']] || "" })
     end
