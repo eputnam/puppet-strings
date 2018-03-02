@@ -64,7 +64,7 @@ SOURCE
       subject.parse
       expect(subject.enumerator.size).to eq(1)
       statement = subject.enumerator.first
-      expect(statement).to be_instance_of(Hash)
+      expect(statement).to be_instance_of(PuppetStrings::Yard::Parsers::JSON::TaskStatement)
     end
   end
 end

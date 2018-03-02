@@ -59,7 +59,7 @@ class PuppetStrings::Yard::CodeObjects::Task < PuppetStrings::Yard::CodeObjects:
       file: statement.file,
       line: statement.line,
       docstring: {
-        text: statement.json['description'],
+        text: statement.docstring,
         tags: parameters
       },
       source: statement.source,
