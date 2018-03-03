@@ -64,6 +64,12 @@ class PuppetStrings::Yard::Parsers::Puppet::Parser < YARD::Parser::Base
     statement
   end
 
+  def transform_PlanDefinition(o)
+    statement = PuppetStrings::Yard::Parsers::Puppet::PlanStatement.new(o, @file)
+    statement.extract_docstring(@lines)
+    statement
+  end
+
   def transform_Object(o)
     # Ignore anything else (will be compacted out of the resulting array)
   end
