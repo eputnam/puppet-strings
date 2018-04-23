@@ -5,6 +5,7 @@ module PuppetStrings::Yard::CodeObjects
   require 'puppet-strings/yard/code_objects/type'
   require 'puppet-strings/yard/code_objects/provider'
   require 'puppet-strings/yard/code_objects/function'
+  require 'puppet-strings/yard/code_objects/fact'
   require 'puppet-strings/yard/code_objects/task'
   require 'puppet-strings/yard/code_objects/plan'
 end

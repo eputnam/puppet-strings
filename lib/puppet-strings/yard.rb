@@ -45,6 +45,7 @@ class YARD::CLI::Yardoc
       :root,
       :module,
       :class,
+      :fact,
       :puppet_class,
       :puppet_defined_type,
       :puppet_type,
@@ -60,6 +61,10 @@ end
 # This is the recommended way to add custom stats.
 # @private
 class YARD::CLI::Stats
+  def stats_for_facts
+    output 'Facts', *type_statistics_all(:fact)
+  end
+
   def stats_for_puppet_classes
     output 'Puppet Classes', *type_statistics_all(:puppet_class)
   end

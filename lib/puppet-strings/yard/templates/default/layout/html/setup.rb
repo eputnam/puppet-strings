@@ -4,7 +4,7 @@ def init
   case object
   when '_index.html'
     @page_title = options.title
-    sections :layout, [:index, [:listing, [:classes, :defined_types, :types, :providers, :functions, :tasks, :plans, :files, :objects]]]
+    sections :layout, [:index, [:listing, [:classes, :defined_types, :types, :providers, :functions, :facts, :tasks, :plans, :files, :objects]]]
   else
     super
   end
@@ -45,6 +45,10 @@ def layout
   when PuppetStrings::Yard::CodeObjects::Function
     @nav_url = url_for_list('puppet_function')
     @page_title = "Puppet Function: #{object.name} (#{object.function_type})"
+    @path = object.path
+  when PuppetStrings::Yard::CodeObjects::Fact
+    @nav_url = url_for_list('fact')
+    @page_title = "Fact: #{object.name}"
     @path = object.path
   when PuppetStrings::Yard::CodeObjects::Task
     @nav_url = url_for_list('puppet_task')
@@ -95,6 +99,11 @@ def create_menu_lists
       type: 'puppet_function',
       title: 'Puppet Functions',
       search_title: 'Puppet Functions'
+    },
+    {
+      type: 'fact',
+      title: 'Facts',
+      search_title: 'Facts'
     },
     {
       type: 'puppet_task',
@@ -184,6 +193,14 @@ end
 def functions
   @title = 'Puppet Function Listing A-Z'
   @objects_by_letter = objects_by_letter(:puppet_function)
+  erb(:objects)
+end
+
+# Renders the facts section.
+# @return [String] Returns the rendered section.
+def facts
+  @title = 'Fact Listing A-Z'
+  @objects_by_letter = objects_by_letter(:fact)
   erb(:objects)
 end
 

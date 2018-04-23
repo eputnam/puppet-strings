@@ -43,6 +43,15 @@ def generate_puppet_function_list
   generate_list_contents
 end
 
+# Generates the searchable Fact list.
+# @return [void]
+def generate_fact_list
+  @items = Registry.all(:fact).sort_by { |c| c.name.to_s }
+  @list_title = 'Fact List'
+  @list_type = 'fact'
+  generate_list_contents
+end
+
 # Generates the searchable Ruby method list.
 # @return [void]
 def generate_method_list
