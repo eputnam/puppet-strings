@@ -45,7 +45,7 @@ class YARD::CLI::Yardoc
       :root,
       :module,
       :class,
-      :fact,
+      :custom_fact,
       :puppet_class,
       :puppet_defined_type,
       :puppet_type,
@@ -62,7 +62,7 @@ end
 # @private
 class YARD::CLI::Stats
   def stats_for_facts
-    output 'Facts', *type_statistics_all(:fact)
+    output 'Custom Facts', *type_statistics_all(:custom_fact)
   end
 
   def stats_for_puppet_classes

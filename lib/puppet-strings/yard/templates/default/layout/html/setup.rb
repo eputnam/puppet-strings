@@ -47,8 +47,8 @@ def layout
     @page_title = "Puppet Function: #{object.name} (#{object.function_type})"
     @path = object.path
   when PuppetStrings::Yard::CodeObjects::Fact
-    @nav_url = url_for_list('fact')
-    @page_title = "Fact: #{object.name}"
+    @nav_url = url_for_list('custom_fact')
+    @page_title = "Custom Fact: #{object.name}"
     @path = object.path
   when PuppetStrings::Yard::CodeObjects::Task
     @nav_url = url_for_list('puppet_task')
@@ -101,9 +101,9 @@ def create_menu_lists
       search_title: 'Puppet Functions'
     },
     {
-      type: 'fact',
-      title: 'Facts',
-      search_title: 'Facts'
+      type: 'custom_fact',
+      title: 'Custom Facts',
+      search_title: 'Custom Facts'
     },
     {
       type: 'puppet_task',

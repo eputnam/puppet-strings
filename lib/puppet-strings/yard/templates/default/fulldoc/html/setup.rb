@@ -45,10 +45,10 @@ end
 
 # Generates the searchable Fact list.
 # @return [void]
-def generate_fact_list
-  @items = Registry.all(:fact).sort_by { |c| c.name.to_s }
-  @list_title = 'Fact List'
-  @list_type = 'fact'
+def generate_custom_fact_list
+  @items = Registry.all(:custom_fact).sort_by { |c| c.name.to_s }
+  @list_title = 'Custom Fact List'
+  @list_type = 'custom_fact'
   generate_list_contents
 end
 

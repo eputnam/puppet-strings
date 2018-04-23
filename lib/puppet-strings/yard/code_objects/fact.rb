@@ -6,33 +6,39 @@ class PuppetStrings::Yard::CodeObjects::Facts < PuppetStrings::Yard::CodeObjects
   # @param [Symbol] type The function type to get the group for.
   # @return Returns the singleton instance of the group.
   def self.instance
-    super(:fact)
+    super(:custom_fact)
   end
 
   # Gets the display name of the group.
   # @param [Boolean] prefix whether to show a prefix. Ignored for Puppet group namespaces.
   # @return [String] Returns the display name of the group.
   def name(prefix = false)
-    'Facts'
+    'Custom Facts'
   end
 end
 
 # Implements the Puppet function code object.
 class PuppetStrings::Yard::CodeObjects::Fact < PuppetStrings::Yard::CodeObjects::Base
 
+  attr_reader :statement
   # Initializes a Puppet function code object.
   # @param [String] name The name of the function.
   # @param [Symbol] function_type The type of function (e.g. :ruby3x, :ruby4x, :puppet)
   # @return [void]
   def initialize(name, statement)
     @name = name
+    @statement = statement
     super(PuppetStrings::Yard::CodeObjects::Facts.instance, name)
+  end
+
+  def source
+    statement.source
   end
 
   # Gets the type of the code object.
   # @return Returns the type of the code object.
   def type
-    :fact
+    :custom_fact
   end
 
   # Converts the code object to a hash representation.
