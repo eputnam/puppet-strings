@@ -103,6 +103,30 @@ module PuppetStrings::Yard::Parsers::Puppet
     end
   end
 
+  class DataTypeStatement < Statement
+    attr_reader :name
+
+    # Initializes the Puppet type statement.
+    # @param [Puppet::Pops::Model::TypeDefinition] object The model object for the Type statement.
+    # @param [String] file The file containing the statement.
+    def initialize(object, file)
+      super(object, file)
+      @source = extract_source(object)
+      @name = object.name
+    end
+
+    def extract_source(object)
+      source_arr = object.locator.string.split("\n")
+      source_arr.delete_if { |string| string.match(/^\#/) }.join("\n")
+    end
+
+    def type_def
+      arr = @source.split("=")
+      arr.shift
+      arr.join
+    end
+  end
+
   # Implements the Puppet class statement.
   class ClassStatement < ParameterizedStatement
     attr_reader :name

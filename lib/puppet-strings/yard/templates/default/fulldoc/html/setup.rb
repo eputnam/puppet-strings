@@ -52,6 +52,15 @@ def generate_custom_fact_list
   generate_list_contents
 end
 
+# Generates the searchable Puppet defined type list.
+# @return [void]
+def generate_puppet_data_type_list
+  @items = Registry.all(:puppet_data_type).sort_by {|dt| dt.name.to_s }
+  @list_title = 'Data Type List'
+  @list_type = 'puppet_data_type'
+  generate_list_contents
+end
+
 # Generates the searchable Ruby method list.
 # @return [void]
 def generate_method_list

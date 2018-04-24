@@ -48,6 +48,7 @@ class YARD::CLI::Yardoc
       :custom_fact,
       :puppet_class,
       :puppet_defined_type,
+      :puppet_data_type,
       :puppet_type,
       :puppet_provider,
       :puppet_function,
@@ -63,6 +64,10 @@ end
 class YARD::CLI::Stats
   def stats_for_facts
     output 'Custom Facts', *type_statistics_all(:custom_fact)
+  end
+
+  def stats_for_puppet_data_types
+    output 'Puppet Data Types', *type_statistics_all(:puppet_data_type)
   end
 
   def stats_for_puppet_classes

@@ -69,6 +69,12 @@ class PuppetStrings::Yard::Parsers::Puppet::Parser < YARD::Parser::Base
     statement
   end
 
+  def transform_TypeAlias(o)
+    statement = PuppetStrings::Yard::Parsers::Puppet::DataTypeStatement.new(o, @file)
+    statement.extract_docstring(@lines)
+    statement
+  end
+
   def transform_PlanDefinition(o)
     statement = PuppetStrings::Yard::Parsers::Puppet::PlanStatement.new(o, @file)
     statement.extract_docstring(@lines)

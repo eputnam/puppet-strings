@@ -4,7 +4,7 @@ def init
   case object
   when '_index.html'
     @page_title = options.title
-    sections :layout, [:index, [:listing, [:classes, :defined_types, :types, :providers, :functions, :facts, :tasks, :plans, :files, :objects]]]
+    sections :layout, [:index, [:listing, [:classes, :defined_types, :types, :providers, :functions, :facts, :data_types, :tasks, :plans, :files, :objects]]]
   else
     super
   end
@@ -49,6 +49,10 @@ def layout
   when PuppetStrings::Yard::CodeObjects::Fact
     @nav_url = url_for_list('custom_fact')
     @page_title = "Custom Fact: #{object.name}"
+    @path = object.path
+  when PuppetStrings::Yard::CodeObjects::DataType
+    @nav_url = url_for_list('puppet_data_type')
+    @page_title = "Data Type: #{object.name}"
     @path = object.path
   when PuppetStrings::Yard::CodeObjects::Task
     @nav_url = url_for_list('puppet_task')
@@ -106,14 +110,19 @@ def create_menu_lists
       search_title: 'Custom Facts'
     },
     {
+      type: 'puppet_data_type',
+      title: 'Puppet Data Types',
+      search_title: 'Puppet Data Types'
+    },
+    {
       type: 'puppet_task',
       title: 'Puppet Tasks',
-      search_totle: 'Puppet Tasks'
+      search_title: 'Puppet Tasks'
     },
     {
       type: 'puppet_plan',
       title: 'Puppet Plans',
-      search_totle: 'Puppet Plans'
+      search_title: 'Puppet Plans'
     },
     {
       type: 'class',
@@ -201,6 +210,14 @@ end
 def facts
   @title = 'Fact Listing A-Z'
   @objects_by_letter = objects_by_letter(:fact)
+  erb(:objects)
+end
+
+# Renders the data types section.
+# @return [String] Returns the rendered section.
+def data_types
+  @title = 'Data Type Listing A-Z'
+  @objects_by_letter = objects_by_letter(:puppet_data_type)
   erb(:objects)
 end
 

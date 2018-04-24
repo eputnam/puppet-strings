@@ -19,6 +19,7 @@ module PuppetStrings::Yard::Handlers
     require 'puppet-strings/yard/handlers/puppet/class_handler'
     require 'puppet-strings/yard/handlers/puppet/defined_type_handler'
     require 'puppet-strings/yard/handlers/puppet/function_handler'
+    require 'puppet-strings/yard/handlers/puppet/data_type_handler'
     require 'puppet-strings/yard/handlers/puppet/plan_handler'
   end
 end
